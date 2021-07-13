@@ -33,15 +33,22 @@ app.post('/', (req, res) => {
 
     const jsonData = JSON.stringify(data);
 
-    const url = "https://us6.api.mailchimp.com/3.0/lists/6cb36df0b3";
+    const url;
     const options = {
         method: 'POST',
-        auth: "Yenss:46d6c4cb22ffa8a72aaf9364e946d610-us6"
+        auth: "Yensss:"
     }
 
     const request = https.request(url, options, (response) => {
+        // if (response.statusCode === 200) {
+        //     res.send("POST SUCCESSFUL")
+        // }
+        // else {
+        //     res.send("There was an error");
+        // }
+        console.log(response.statusCode);
         response.on('data', (data) => {
-            console.log(JSON.parse(data));
+            // console.log(JSON.parse(data));
         })
     })
 
@@ -49,7 +56,7 @@ app.post('/', (req, res) => {
     request.end();
 
 
-    res.send("POST SUCCESSFUL")
+
 })
 
 
@@ -57,7 +64,3 @@ app.listen(3000, () => {
     console.log("Server listening at port 3000");
 })
 
-
-//46d6c4cb22ffa8a72aaf9364e946d610-us6
-// 46d6c4cb22ffa8a72aaf9364e946d610 - us6
-//6cb36df0b3
